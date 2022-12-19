@@ -7,6 +7,7 @@ const { createToken } = require("../helpers/tokens");
 const Job = require("../models/job.js");
 
 async function commonBeforeAll() {
+  console.log("commonBeforeAll");
   // noinspection SqlWithoutWhere
   await db.query("DELETE FROM users");
   // noinspection SqlWithoutWhere
@@ -96,14 +97,17 @@ async function commonBeforeAll() {
 }
 
 async function commonBeforeEach() {
+  console.log("commonBeforeEach");
   await db.query("BEGIN");
 }
 
 async function commonAfterEach() {
+  console.log("commonAfterEach");
   await db.query("ROLLBACK");
 }
 
 async function commonAfterAll() {
+  console.log("commonAfterAll");
   await db.end();
 }
 
